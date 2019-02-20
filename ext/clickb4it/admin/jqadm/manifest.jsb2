@@ -1,0 +1,22 @@
+{
+	"projectName": "clickb4it",
+	"licenseText": "proprietary",
+	"pkgs": [{
+		"name": "clickb4it CSS",
+		"file": "clickb4it.css",
+		"isDebug": true,
+		"fileIncludes": [{
+			"text": "custom.css",
+			"path": "themes/"
+		}]
+	}, {
+		"name": "clickb4it JS",
+		"file": "clickb4it.js",
+		"isDebug": true,
+		"fileIncludes": [{
+			"text": "custom.js",
+			"path": "themes/"
+		}]
+	}],
+	"resources" : []
+}
