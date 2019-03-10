@@ -5,6 +5,9 @@
 /.history
 /storage
 
+/routes/web.php
+composer.json
+
 !/vendor
 /vendor/*
 !/vendor/aimeos
