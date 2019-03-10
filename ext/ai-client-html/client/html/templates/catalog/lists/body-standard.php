@@ -86,7 +86,6 @@ if( $this->get( 'listProductTotal', 0 ) > 1 )
 }
 
 ?>
-<div class="col-lg-9">
 <section class="aimeos catalog-list<?= $enc->attr( $classes ); ?>" data-jsonurl="<?= $enc->attr( $this->url( $optTarget, $optCntl, $optAction, [], [], $optConfig ) ); ?>">
 
 	<?php if( isset( $this->listErrorList ) ) : ?>
@@ -138,7 +137,16 @@ if( $this->get( 'listProductTotal', 0 ) > 1 )
 
 	<?= $this->block()->get( 'catalog/lists/promo' ); ?>
 
-	<!-- REMOVED catalog list/grid tabs -->
+
+	<?php if( ( $total = $this->get( 'listProductTotal', 0 ) ) > 0 ) : ?>
+		<div class="catalog-list-type">
+			<a class="type-item type-grid" href="<?= $enc->attr( $this->url( $target, $cntl, $action, array( 'l_type' => 'grid' ) + $params, [], $config ) ); ?>"></a>
+			<a class="type-item type-list" href="<?= $enc->attr( $this->url( $target, $cntl, $action, array( 'l_type' => 'list' ) + $params, [], $config ) ); ?>"></a>
+		</div>
+	<?php endif; ?>
+
+
+	<?= $pagination; ?>
 
 
 	<?php if( ( $searchText = $this->param( 'f_search', null ) ) != null ) : ?>
@@ -170,12 +178,8 @@ if( $this->get( 'listProductTotal', 0 ) > 1 )
 
 
 	<?= $this->block()->get( 'catalog/lists/items' ); ?>
-	<div class="row">
-	<!-- Clickbait Image -->
-		
-	</div>
-	<!-- <img src="files/CLICKBAIT-SHIRT-1.gif" alt="rotating shirt" class="rotating_shirt"> -->
 
+
+ 	<?= $pagination; ?>
 
 </section>
-</div>

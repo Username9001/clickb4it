@@ -38,7 +38,44 @@ $mediaItems = $this->get( 'mediaItems', [] );
 ?>
 <div class="catalog-detail-image">
 
+	<div class="image-single" data-pswp="{bgOpacity: 0.75, shareButtons: false}">
 
+		<?php foreach( $mediaItems as $id => $mediaItem ) : ?>
+			<?php $mediaUrl = $enc->attr( $this->content( $mediaItem->getUrl() ) ); ?>
+			<?php $previewUrl = $enc->attr( $this->content( $mediaItem->getPreview() ) ); ?>
+
+			<figure id="image-<?= $enc->attr( $id ); ?>"
+				class="item" style="background-image: url('<?= $mediaUrl; ?>')"
+				itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject"
+				data-image="<?= $previewUrl; ?>"
+				<?= $getVariantData( $mediaItem ); ?> >
+				<a href="<?= $enc->attr( $mediaUrl ); ?>" itemprop="contentUrl"></a>
+				<figcaption itemprop="caption description"><?= $enc->html( $mediaItem->getName() ); ?></figcaption>
+			</figure>
+
+		<?php endforeach; ?>
+
+	</div><!--
+
+	--><?php if( count( $mediaItems ) > 1 ) : $class = 'item selected'; ?>
+		<div class="image-thumbs thumbs-horizontal" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'><!--
+			--><button type="button" class="slick-prev"><?= $enc->html( $this->translate( 'client', 'Previous' ) ); ?></button><!--
+			--><div class="thumbs"><!--
+
+				<?php foreach( $mediaItems as $id => $mediaItem ) : ?>
+					<?php $previewUrl = $enc->attr( $this->content( $mediaItem->getPreview() ) ); ?>
+
+					--><a class="<?= $class; ?>" style="background-image: url('<?= $previewUrl; ?>')"
+						href="<?= $url . '#image-' . $enc->attr( $id ); ?>"
+					></a><!--
+
+					<?php $class = 'item'; ?>
+				<?php endforeach; ?>
+
+			--></div><!--
+			--><button type="button" class="slick-next"><?= $enc->html( $this->translate( 'client', 'Next' ) ); ?></button><!--
+		--></div>
+	<?php endif; ?>
 
 
 	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -95,26 +132,6 @@ $mediaItems = $this->get( 'mediaItems', [] );
 
 			</div>
 		</div>
-	</div>
-
-	<div class="image-single" data-pswp="{bgOpacity: 0.75, shareButtons: false}">
-
-	<?php foreach( $mediaItems as $id => $mediaItem ) : ?>
-		<?php $mediaUrl = $enc->attr( $this->content( $mediaItem->getUrl() ) ); ?>
-		<?php $previewUrl = $enc->attr( $this->content( $mediaItem->getPreview() ) ); ?>
-
-		<figure id="image-<?= $enc->attr( $id ); ?>"
-			class="item fh-detail-image" style="background-image: url('<?= $mediaUrl; ?>')"
-			itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject"
-			data-image="<?= $previewUrl; ?>"
-			<?= $getVariantData( $mediaItem ); ?> >
-			<a href="<?= $enc->attr( $mediaUrl ); ?>" itemprop="contentUrl"></a>
-			<video playsinline muted autoplay loop src="<?= $mediaUrl; ?>"></video>
-			<figcaption itemprop="caption description"><?= $enc->html( $mediaItem->getName() ); ?></figcaption>
-		</figure>
-		<div></div>
-	<?php endforeach; ?>
-
 	</div>
 
 </div>

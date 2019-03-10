@@ -54,9 +54,9 @@ $basketParams = ( $basketSite ? ['site' => $basketSite] : [] );
 									<meta itemprop="contentUrl" content="<?= $mediaUrl; ?>" />
 								</div>
 							</noscript>
-							<div class="media-item lazy-image quad-borders" data-src="<?= $mediaUrl; ?>"></div>
+							<div class="media-item lazy-image" data-src="<?= $mediaUrl; ?>"></div>
 						<?php else : ?>
-							<div class="media-item quad-borders" data-src="<?= $mediaUrl; ?>"></div>
+							<div class="media-item" data-src="<?= $mediaUrl; ?>"></div>
 						<?php endif; ?>
 					<?php endforeach; ?>
 				</a><!--

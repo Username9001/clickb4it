@@ -95,7 +95,6 @@ if( isset( $this->detailProductItem ) )
 
 
 ?>
-<div class="col-lg-9" style="padding-top:10px;">
 <section class="aimeos catalog-detail" itemscope="" itemtype="http://schema.org/Product" data-jsonurl="<?= $enc->attr( $this->url( $optTarget, $optCntl, $optAction, [], [], $optConfig ) ); ?>">
 
 	<?php if( isset( $this->detailErrorList ) ) : ?>
@@ -123,7 +122,7 @@ if( isset( $this->detailProductItem ) )
 
 		<article class="product row <?= ( isset( $conf['css-class'] ) ? $conf['css-class'] : '' ); ?>" data-id="<?= $this->detailProductItem->getId(); ?>">
 
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<?= $this->partial(
 					/** client/html/catalog/detail/partials/image
 					 * Relative path to the detail image partial template file
@@ -146,7 +145,7 @@ if( isset( $this->detailProductItem ) )
 			</div>
 
 
-			<div class="col-sm-6 resize-detail-description">
+			<div class="col-sm-5">
 
 				<div class="catalog-detail-basic">
 					<h1 class="name" itemprop="name"><?= $enc->html( $this->detailProductItem->getName(), $enc::TRUST ); ?></h1>
@@ -306,7 +305,43 @@ if( isset( $this->detailProductItem ) )
 				</div>
 
 
-				
+				<?= $this->partial(
+					/** client/html/catalog/partials/actions
+					 * Relative path to the catalog actions partial template file
+					 *
+					 * Partials are templates which are reused in other templates and generate
+					 * reoccuring blocks filled with data from the assigned values. The actions
+					 * partial creates an HTML block for the product actions (pin, like and watch
+					 * products).
+					 *
+					 * @param string Relative path to the template file
+					 * @since 2017.04
+					 * @category Developer
+					 */
+					$this->config( 'client/html/catalog/partials/actions', 'catalog/actions-partial-standard.php' ),
+					array(
+						'productItem' => $this->detailProductItem,
+						'params' => $this->get( 'detailParams', [] )
+					)
+				); ?>
+
+
+				<?= $this->partial(
+					/** client/html/catalog/partials/social
+					 * Relative path to the social partial template file
+					 *
+					 * Partials are templates which are reused in other templates and generate
+					 * reoccuring blocks filled with data from the assigned values. The social
+					 * partial creates an HTML block for links to social platforms in the
+					 * catalog components.
+					 *
+					 * @param string Relative path to the template file
+					 * @since 2017.04
+					 * @category Developer
+					 */
+					$this->config( 'client/html/catalog/partials/social', 'catalog/social-partial-standard.php' ),
+					array( 'productItem' => $this->detailProductItem )
+				); ?>
 
 			</div>
 
@@ -500,4 +535,3 @@ if( isset( $this->detailProductItem ) )
 	<?php endif; ?>
 
 </section>
-</div>

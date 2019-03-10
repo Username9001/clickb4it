@@ -138,7 +138,8 @@ $detailConfig = $this->config( 'client/html/catalog/detail/url/config', [] );
 						<?php if( $firstImage === true ) : $firstImage = false; ?>
 							<!-- CHANGED IT TO ACTUAL IMAGE INSTEAD OF BG IMAGE -->
 							<!-- <img class="media-item quad-borders" src="http://clickb4it.test/files/CLICKBAIT-SHIRT-.gif"> -->
-							<video class="media-item quad-borders" playsinline muted autoplay loop disableRemotePlayback src="<?= $videoUrl; ?>"></video>
+			
+							<video id="product-video" class="media-item quad-borders" playsinline muted autoplay loop disableRemotePlayback src="<?= $videoUrl; ?>"></video>
 						<?php else : ?>
 							<!-- REMOVED A LINE -->
 						<?php endif; ?>

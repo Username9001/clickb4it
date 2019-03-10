@@ -40,6 +40,7 @@ body {
     font-family: 'HelveticaRounded';
     background-color: black;
     color: white;
+    margin: 0;
 }
 
 a {

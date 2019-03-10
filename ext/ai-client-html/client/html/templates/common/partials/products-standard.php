@@ -134,19 +134,20 @@ $detailConfig = $this->config( 'client/html/catalog/detail/url/config', [] );
 				<div class="media-list">
 					<?php foreach( $productItem->getRefItems( 'media', 'default', 'default' ) as $mediaItem ) : ?>
 						<?php $mediaUrl = $enc->attr( $this->content( $mediaItem->getPreview() ) ); ?>
-						<?php $videoUrl = $enc->attr( $this->content( $mediaItem->getUrl() ) ); ?>
 						<?php if( $firstImage === true ) : $firstImage = false; ?>
-							<!-- CHANGED IT TO ACTUAL IMAGE INSTEAD OF BG IMAGE -->
-							<!-- <img class="media-item quad-borders" src="http://clickb4it.test/files/CLICKBAIT-SHIRT-.gif"> -->
-							<video class="media-item quad-borders" playsinline muted autoplay loop src="<?= $videoUrl; ?>"></video>
+							<noscript>
+								<div class="media-item" style="background-image: url('<?= $mediaUrl; ?>')" itemscope="" itemtype="http://schema.org/ImageObject">
+									<meta itemprop="contentUrl" content="<?= $mediaUrl; ?>" />
+								</div>
+							</noscript>
+							<div class="media-item lazy-image" data-src="<?= $mediaUrl; ?>"></div>
 						<?php else : ?>
-							<!-- REMOVED A LINE -->
+							<div class="media-item" data-src="<?= $mediaUrl; ?>"></div>
 						<?php endif; ?>
-						<div></div>
 					<?php endforeach; ?>
 				</div>
 
-				<div class="text-list" style="display:none">
+				<div class="text-list">
 					<h2 itemprop="name"><?= $enc->html( $productItem->getName(), $enc::TRUST ); ?></h2>
 					<?php foreach( $productItem->getRefItems( 'text', 'short', 'default' ) as $textItem ) : ?>
 						<div class="text-item" itemprop="description">
@@ -158,7 +159,7 @@ $detailConfig = $this->config( 'client/html/catalog/detail/url/config', [] );
 			</a>
 
 
-			<div class="offer" itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none">
+			<div class="offer" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
 				<div class="stock-list">
 					<div class="articleitem stock-actual"

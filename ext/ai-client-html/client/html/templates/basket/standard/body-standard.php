@@ -76,6 +76,33 @@ $optConfig = $this->config( 'client/jsonapi/url/config', [] );
 			</div>
 
 
+			<div class="basket-standard-coupon">
+				<div class="header">
+					<h2><?= $enc->html( $this->translate( 'client', 'Coupon codes' ) ); ?></h2>
+				</div>
+
+				<div class="content">
+					<?php $coupons = $this->standardBasket->getCoupons(); ?>
+
+					<div class="input-group coupon-new">
+						<input class="form-control coupon-code" name="<?= $enc->attr( $this->formparam( 'b_coupon' ) ); ?>" type="text" maxlength="255" /><!--
+						--><button class="btn btn-primary" type="submit"><?= $enc->html( $this->translate( 'client', '+' ) ); ?></button>
+					</div>
+
+					<?php if( !empty( $coupons ) ) : ?>
+						<ul class="attr-list">
+							<?php foreach( $coupons as $code => $products ) : $params = array( 'b_action' => 'coupon-delete', 'b_coupon' => $code ); ?>
+							<li class="attr-item">
+								<span class="coupon-code"><?= $enc->html( $code ); ?></span>
+								<a class="minibutton delete" href="<?= $enc->attr( $this->url( $basketTarget, $basketController, $basketAction, $params, [], $basketConfig ) ); ?>"></a>
+							</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
+				</div>
+			</div>
+
+
 			<div class="button-group">
 
 				<?php if( isset( $this->standardBackUrl ) ) : ?>

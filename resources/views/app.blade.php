@@ -14,7 +14,6 @@
 
     <title>CLICKB4IT</title>
 
-    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,7 +21,7 @@
 
 </head>
 
-<body>
+<body id="body">
 {{-- <audio id="audioplayer" autobuffer="" loop="true" preload="auto" autoplay>
     <source src="/files/zinc-shooter.mp3" type="audio/mpeg">
     <source src="/files/zinc-shooter.mp3" type="audio/mpeg">
@@ -65,7 +64,7 @@
 
     </nav>
 
-    <div class="">
+    <div class="" id="wrapper">
 
         @yield('aimeos_nav')
 
@@ -89,7 +88,7 @@
         <a href="/terms">Terms & Conditions</a> &nbsp;|&nbsp;
         <a href="/privacy">Privacy Policy</a>
     </footer>
-    
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
@@ -97,7 +96,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     @yield('aimeos_scripts')
-
 
 </body>
 

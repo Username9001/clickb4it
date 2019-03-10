@@ -23,9 +23,9 @@ $detailConfig = $this->config( 'client/html/catalog/detail/url/config', [] );
 	<a href="<?= $enc->attr( $this->url( $detailTarget, $detailController, $detailAction, $params, [], $detailConfig ) ); ?>">
 
 		<?php if( ( $mediaItem = reset( $mediaItems ) ) !== false ) : ?>
-			<div class="media-item quad-borders" style="background-image: url('<?= $this->content( $mediaItem->getPreview() ); ?>')"></div>
+			<div class="media-item" style="background-image: url('<?= $this->content( $mediaItem->getPreview() ); ?>')"></div>
 		<?php else : ?>
-			<div class="media-item quad-borders"></div>
+			<div class="media-item"></div>
 		<?php endif; ?>
 
 		<h3 class="name"><?= $enc->html( $productItem->getName(), $enc::TRUST ); ?></h3>
