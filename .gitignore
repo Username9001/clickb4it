@@ -3,7 +3,7 @@
 /public/storage
 /storage/*.key
 /.history
-/storage
+
 
 /routes/web.php
 composer.json
