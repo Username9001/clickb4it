@@ -132,7 +132,7 @@ $detailConfig = $this->config( 'client/html/catalog/detail/url/config', [] );
 			<a href="<?= $enc->attr( $this->url( ( $productItem->getTarget() ?: $detailTarget ), $detailController, $detailAction, $params, [], $detailConfig ) ); ?>">
 
 				<div class="media-list">
-					<?php foreach( $productItem->getRefItems( 'media', 'default', 'default' ) as $mediaItem ) : ?>
+					<?php foreach( array_slice($productItem->getRefItems( 'media', 'default', 'default' ),1) as $mediaItem ) : ?>
 						<?php $mediaUrl = $enc->attr( $this->content( $mediaItem->getPreview() ) ); ?>
 						<?php $videoUrl = $enc->attr( $this->content( $mediaItem->getUrl() ) ); ?>
 						<?php if( $firstImage === true ) : $firstImage = false; ?>

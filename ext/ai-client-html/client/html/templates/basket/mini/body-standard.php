@@ -173,6 +173,9 @@ $priceFormat = $this->translate( 'client', '%1$s %2$s' );
 							$param = ['resource' => 'basket', 'id' => 'default', 'related' => 'product', 'relatedid' => $pos];
 							if( $basketSite ) { $param['site'] = $basketSite; }
 						?>
+
+
+<p>HEY</p>
 						<tr class="product"
 							data-url="<?= $enc->attr( $this->url( $jsonTarget, $jsonController, $jsonAction, $param, [], $jsonConfig ) ); ?>"
 							data-urldata="<?= $enc->attr( $this->csrf()->name() . '=' . $this->csrf()->value() ); ?>"

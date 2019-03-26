@@ -28,7 +28,6 @@ $detailController = $this->config( 'client/html/catalog/detail/url/controller', 
 $detailAction = $this->config( 'client/html/catalog/detail/url/action', 'detail' );
 $detailConfig = $this->config( 'client/html/catalog/detail/url/config', array( 'absoluteUri' => 1 ) );
 
-
 /** client/html/account/download/url/target
  * Destination of the URL where the controller specified in the URL is known
  *
